@@ -25,7 +25,7 @@ Ensure you have the following installed on your system:
 Now u should see the login screen:
 ![login_image]("./images/login.png")
 If installation went correctly there should be created example data and 3 users:
-* login: ```coordinator1``` password: ```Str0ngPa$$word``` - user with coordinator rights,
+* login: ```coordinator1```, password: ```Str0ngPa$$word``` - user with coordinator rights,
 * logins: ```lifeguard1```, ```lifeguard2```, password: ```Str0ngPa$$word``` - users with lifeguard rights.
 
 There is also administrator role. U have to go on [localhost/admin](http://localhost:8000/admin) and login and passworrd is ```admin```. 
