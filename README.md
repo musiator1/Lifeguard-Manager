@@ -20,13 +20,13 @@ Ensure you have the following installed on your system:
 1. Open terminal and clone repository
 2. ```cd Lifeguard-Manager```
 3. ```docker-compose up --build -d```
-4. Open browser and go to [localhost](127.0.0.1:80)
+4. Open browser and go to [localhost](http://localhost:80)  
 
 Now u should see the login screen:
-[login_image]("./images/login.png")
+![login_image]("./images/login.png")
 If installation went correctly there should be created example data and 3 users:
 * login: ```coordinator1``` password: ```Str0ngPa$$word``` - user with coordinator rights,
 * logins: ```lifeguard1```, ```lifeguard2```, password: ```Str0ngPa$$word``` - users with lifeguard rights.
 
-There is also administrator role. U have to go on [localhost/admin](127.0.0.1:80/admin) and login and passworrd is ```admin```. 
+There is also administrator role. U have to go on [localhost/admin](http://localhost:8000/admin) and login and passworrd is ```admin```. 
 Its all done! I encourage you to explore views and features of the system. 
