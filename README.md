@@ -22,7 +22,7 @@ Ensure you have the following installed on your system:
 3. ```docker-compose up --build -d```
 4. Open browser and go to [localhost](http://localhost:80)  
 
-Now u should see the login screen:
+Now u should see the **login screen**:
 ![login_image](images/login.png)
 If installation went correctly there should be created example data and 3 users:
 * login: ```coordinator1```, password: ```Str0ngPa$$word``` - user with coordinator rights,
@@ -30,11 +30,11 @@ If installation went correctly there should be created example data and 3 users:
 
 There is also administrator role. U have to go on [localhost/admin](http://localhost:80/admin) and login and passworrd is ```admin```. 
 Its all done! I encourage you to explore views and features of the system. Here u have other views in system:
-List of pools:
+#### List of pools:
 ![login_image](images/pool_list.png)
-Applying for a shift:
+#### Applying for a shift:
 ![login_image](images/shifts.png)
-Changing status of the application:
+#### Changing status of the application:
 ![login_image](images/applications.png)
 
 # Technologies used:
