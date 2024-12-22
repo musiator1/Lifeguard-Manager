@@ -1,0 +1,47 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    {% load static %}
+    {% load group_tags %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Lifeguard Manager{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="header-title">Lifeguard Manager</h1>
+            <div class="user-info">
+                {% if user.is_authenticated %}
+                    <span>Hi, {{ user.username }}!</span>
+                    <a href="{% url 'logout' %}" class="button button-logout">Log Out</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="button button-login">Log In</a>
+                {% endif %}
+            </div>
+        </header>
+        <nav>
+            <ul>
+                {% if user|in_group:"Coordinators" %}
+                    <li><a href="{% url 'pool_list' %}">Pools</a></li>
+                    <li><a href="{% url 'lifeguard_list' %}">Lifeguards</a></li>
+                    <li><a href="{% url 'shift_list' %}">Shifts</a></li>
+                    <li><a href="{% url 'application_list' %}">Applications</a></li>
+                    <li><a href="{% url 'incident_list' %}">Incidents</a></li>
+                {% elif user|in_group:"Lifeguards" %}
+                    <li><a href="{% url 'shift_list_lifeguard' %}">Avaible Shifts</a></li>
+                    <li><a href="{% url 'application_list_lifeguard' %}">My Applications</a></li>
+                    <li><a href="{% url 'incident_list_lifeguard' %}">My Incidents</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Lifeguard Manager. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}My Incidents{% endblock %}
+
+{% block content %}
+<h2>My Incidents</h2>
+
+<form method="get" class="filter-form">
+    <div class="filter-fields">
+        {{ form.type }}
+        {{ form.pool }}
+        <label for="date_from">Date from:</label>
+        <input type="date" name="date_from" value="{{ form.date_from.value|default:'' }}">
+        <label for="date_to">Date to:</label>
+        <input type="date" name="date_to" value="{{ form.date_to.value|default:'' }}">
+    </div>
+    <button type="submit" class="filter-button">Filter</button>
+</form>
+
+<a href="{% url 'incident_create' %}" class="button button-add">Add New Incident</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Pool</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for incident in incidents %}
+        <tr>
+            <td>{{ incident.pool }}</td>
+            <td>{{ incident.date_time|date:"Y-m-d H:i" }}</td>
+            <td>{{ incident.get_type_display }}</td>
+            <td>{{ incident.description }}</td>
+            <td>
+                <a href="{% url 'incident_update' incident.id %}" class="button button-edit">Edit</a>
+                <a href="{% url 'incident_delete' incident.id %}" class="button button-delete">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No incidents to display.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

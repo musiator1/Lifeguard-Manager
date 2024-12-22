@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}List of Incidents{% endblock %}
+
+{% block content %}
+<h2>List of Incidents</h2>
+
+<form method="get" class="filter-form">
+    <div class="filter-fields">
+        {{ form.type }}
+        {{ form.pool }}
+        <label for="date_from">Date from:</label>
+        <input type="date" name="date_from" placeholder="From date" value="{{ form.date_from.value|default:'' }}">
+        <label for="date_to">Date to:</label>
+        <input type="date" name="date_to" placeholder="To date" value="{{ form.date_to.value|default:'' }}">
+    </div>
+    <button type="submit" class="filter-button">Filter</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Pool</th>
+            <th>Description</th>
+            <th>Date and Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for incident in incidents %}
+        <tr>
+            <td>{{ incident.get_type_display }}</td>
+            <td>{{ incident.pool }}</td>
+            <td>{{ incident.description }}</td>
+            <td>{{ incident.date_time }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No incidents to display.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

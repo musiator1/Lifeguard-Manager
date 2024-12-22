@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Applications List{% endblock %}
+
+{% block content %}
+<h2>Applications List</h2>
+
+<form method="get" class="filter-form">
+    <div class="filter-fields">
+        {{ form.status }}
+        {{ form.ratownik }}
+    </div>
+    <button type="submit" class="filter-button">Filter</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Lifeguard</th>
+            <th>Shift</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for application in applications %}
+        <tr>
+            <td>{{ application.lifeguard }}</td>
+            <td>{{ application.shift }}</td>
+            <td>{{ application.get_status_display }}</td>
+            <td>
+                <a href="{% url 'application_status_update' application.id %}" class="button button-edit">Change Status</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No applications to display.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

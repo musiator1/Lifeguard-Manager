@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista Zmian{% endblock %}
+
+{% block content %}
+<h2>Shift List</h2>
+
+<form method="get" class="filter-form">
+    <div class="filter-fields">
+        {{ form.pool }} 
+        <input type="date" name="date" placeholder="Data" value="{{ form.date.value|default:''}}">
+    </div>
+    <button type="submit" class="filter-button">Filter</button>
+</form>
+
+<a href="{% url 'shift_create' %}" class="button button-add">Add New Shift</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Pool</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for shift in shifts %}
+        <tr>
+            <td>{{ shift.pool }}</td>
+            <td>{{ shift.date }}</td>
+            <td>{{ shift.start_time }}</td>
+            <td>{{ shift.end_time }}</td>
+            <td>
+                <a href="{% url 'shift_update' shift.id %}" class="button button-edit">Edit</a>
+                <a href="{% url 'shift_delete' shift.id %}" class="button button-delete">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No shifts to display.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

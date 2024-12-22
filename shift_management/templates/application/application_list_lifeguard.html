@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Applications{% endblock %}
+
+{% block content %}
+<h2>Your Applications</h2>
+
+<form method="get" class="filter-form">
+    <div class="filter-fields">
+        {{ form.status }}
+    </div>
+    <button type="submit" class="filter-button">Filter</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Shift</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for application in applications %}
+        <tr>
+            <td>{{ application.shift }}</td>
+            <td>{{ application.get_status_display }}</td>
+            <td>
+                <form method="post" action="{% url 'application_delete' application.id %}" class="shift-report-form">
+                    {% csrf_token %}
+                    <button type="submit" class="button button-delete-report">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No applications to display.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

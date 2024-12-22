@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Confirm Deletion</h2>
+    <p>Are you sure you want to delete lifeguard {{ lifeguard.first_name }} {{ lifeguard.last_name }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="button button-delete">Delete</button>
+        <a href="{% url 'lifeguard_list' %}" class="button button-cancel">Cancel</a>
+    </form>
+{% endblock %}

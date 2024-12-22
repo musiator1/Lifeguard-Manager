@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Incident{% endblock %}
+
+{% block content %}
+<h2>Add Incident</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button button-save">Save</button>
+</form>
+<a href="{% url 'incident_list_lifeguard' %}" class="button button-back">Back</a>
+{% endblock %}

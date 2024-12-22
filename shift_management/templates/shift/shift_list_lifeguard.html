@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Available Shifts List{% endblock %}
+
+{% block content %}
+<h2>Available Shifts</h2>
+
+<form method="get" class="filter-form">
+    <div class="filter-fields">
+        {{ form.pool }} 
+        <input type="date" name="date" placeholder="Date" value="{{ form.date.value|default:''}}">
+    </div>
+    <button type="submit" class="filter-button">Filter</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Pool</th>
+            <th>Date</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for shift in shifts %}
+        <tr>
+            <td>{{ shift.pool }}</td>
+            <td>{{ shift.date }}</td>
+            <td>{{ shift.start_time }}</td>
+            <td>{{ shift.end_time }}</td>
+            <td>
+                <form method="post" action="{% url 'application_create' shift.id %}" class="shift-report-form">
+                    {% csrf_token %}
+                    <button type="submit" class="button button-report">Apply for Shift</button>
+                </form>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No available shifts to apply for.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

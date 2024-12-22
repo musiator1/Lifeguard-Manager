@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% if form.instance.pk %}Edit Shift{% else %}Add New Shift{% endif %}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button id="n1" type="submit" class="button button-save">Save</button>
+        <a href="{% url 'shift_list' %}" class="button button-cancel">Cancel</a>
+    </form>
+{% endblock %}

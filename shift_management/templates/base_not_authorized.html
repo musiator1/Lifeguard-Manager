@@ -1,0 +1,23 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Lifeguard Manager{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Lifeguard Manager</h1>
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Lifeguard Manager. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{% extends 'base_not_authorized.html' %}
+
+{% block content %}
+    <h1>Logged Out</h1>
+    <h2>You have been successfully logged out.</h2>
+    <a href="{% url 'login' %}" class="button button-save">Log in again</a>
+{% endblock %}

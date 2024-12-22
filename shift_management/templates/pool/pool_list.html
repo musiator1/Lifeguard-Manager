@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}Pool List{% endblock %}
+
+{% block content %}
+<h2>Pool List</h2>
+
+<form method="get" class="filter-form">
+    <div class="filter-fields">
+        <input type="text" name="name" placeholder="Name" value="{{ form.name.value|default:''}}">
+        <input type="text" name="address" placeholder="Address" value="{{ form.address.value|default:''}}">
+        <input type="text" name="phone" placeholder="Phone" value="{{ form.phone.value|default:''}}">
+    </div>
+    <button type="submit" class="filter-button">Filter</button>
+</form>
+
+<a href="{% url 'pool_create' %}" class="button button-add">Add New Pool</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pool in pools %}
+        <tr>
+            <td>{{ pool.name }}</td>
+            <td>{{ pool.address }}</td>
+            <td>{{ pool.phone }}</td>
+            <td>
+                <a href="{% url 'pool_update' pool.id %}" class="button button-edit">Edit</a>
+                <a href="{% url 'pool_delete' pool.id %}" class="button button-delete">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No pools to display.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

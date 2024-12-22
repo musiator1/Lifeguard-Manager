@@ -1,0 +1,13 @@
+<!-- basen_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Are you sure you want to delete the pool?</h2>
+    <h3 >{{ pool }}</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="button button-delete">Delete</button>
+        <a href="{% url 'pool_list' %}" class="button button-cancel">Cancel</a>
+    </form>
+{% endblock %}
