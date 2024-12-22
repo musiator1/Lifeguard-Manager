@@ -28,7 +28,7 @@ If installation went correctly there should be created example data and 3 users:
 * login: ```coordinator1```, password: ```Str0ngPa$$word``` - user with coordinator rights,
 * logins: ```lifeguard1```, ```lifeguard2```, password: ```Str0ngPa$$word``` - users with lifeguard rights.
 
-There is also administrator role. U have to go on [localhost/admin](http://localhost:8000/admin) and login and passworrd is ```admin```. 
+There is also administrator role. U have to go on [localhost/admin](http://localhost:80/admin) and login and passworrd is ```admin```. 
 Its all done! I encourage you to explore views and features of the system. Here u have other views in system:
 List of pools:
 ![login_image](images/pool_list.png)
