@@ -36,3 +36,17 @@ Applying for a shift:
 ![login_image](images/shifts.png)
 Changing status of the application:
 ![login_image](images/applications.png)
+
+# Technologies used:
+* Django 5.1
+* PostgreSQL
+* Docker & Docker Compose
+* Nginx
+* Gunicorn
+
+# Project structure:
+* ```lifeguard_manager/``` - main Django application folder containing settings, wsgi, and urls.
+* ```shift_management/``` - app responsible for pools, shifts, and incidents management.
+* ```images/``` - screenshots for the README file.
+* ```docker-compose.yml``` - Docker Compose configuration for the project.
+* ```init.sh``` - script to initialize migrations, load ```sample_data.json``` and setup the application.
